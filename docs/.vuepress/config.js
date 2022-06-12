@@ -2,7 +2,7 @@ module.exports = {
   lang: 'zh-CN',
   title: 'oDen7的个人博客',
   description: '个人学习记录,成长日记',
-  // base:"/front-end/",
+  base:"/front-end/",
 
   theme: '@vuepress/theme-default',
   themeConfig: {
