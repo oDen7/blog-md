@@ -15,4 +15,6 @@ git commit -m 'deploy'
 
 git push -f git@github.com:oDen7/blog-md.git master:gh-pages
 
+
+
 cd -
