@@ -1,11 +1,4 @@
 #!/usr/bin/env sh
-###
- # @File Name: 
- # @Description: 
- # @Author: oDen7
- # @LastEditors: oDen7
- # @LastEditTime: 2022-06-12 19:27:38
-### 
 
 set -e
 
@@ -20,6 +13,6 @@ git init
 git add -A
 git commit -m 'deploy'
 
-git push -f https://${access_token}@github.com/oDen7/blog-md.git t master:gh-pages
+git push -f git@github.com:oDen7/blog-md.git master:gh-pages
 
 cd -
