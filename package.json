@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "vuepress dev docs",
-    "build:front": "vuepress build docs/front-end"
+    "build": "vuepress build docs"
   },
   "repository": {
     "type": "git",
