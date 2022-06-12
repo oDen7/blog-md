@@ -1,0 +1,33 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <!-- 弹头 -->
+    <line x1="200" y1="150" x2="235" y2="0" style="stroke:rgb(99,99,99);stroke-width:5" />
+    <line x1="270" y1="150" x2="235" y2="0" style="stroke:rgb(99,99,99);stroke-width:5" />
+    <!-- 弹体 -->
+    <line x1="200" y1="150" x2="200" y2="700" style="stroke:rgb(99,99,99);stroke-width:5" />
+    <line x1="270" y1="150" x2="270" y2="700" style="stroke:rgb(99,99,99);stroke-width:5" />
+    <!-- 弹尾 -->
+    <line x1="197" y1="700" x2="270" y2="700" style="stroke:rgb(99,99,99);stroke-width:5" />
+    <!-- 左尾翼 -->
+    <line x1="200" y1="697" x2="165" y2="697" style="stroke:rgb(99,99,99);stroke-width:5" />
+    <line x1="165" y1="697" x2="165" y2="650" style="stroke:rgb(99,99,99);stroke-width:5" />
+    <line x1="165" y1="650" x2="200" y2="560" style="stroke:rgb(99,99,99);stroke-width:5" />
+    <!-- 中尾翼 -->
+    <line x1="235" y1="697" x2="235" y2="560" style="stroke:rgb(99,99,99);stroke-width:5" />
+    <!-- 右尾翼 -->
+    <line x1="270" y1="697" x2="305" y2="697" style="stroke:rgb(99,99,99);stroke-width:5" />
+    <line x1="305" y1="697" x2="305" y2="650" style="stroke:rgb(99,99,99);stroke-width:5" />
+    <line x1="305" y1="650" x2="270" y2="560" style="stroke:rgb(99,99,99);stroke-width:5" />
+    <!-- logo -->
+    <circle cx="235" cy="250" r="30" style="stroke:rgb(99,99,99);stroke-width:3;fill:orange" />
+    <circle cx="235" cy="250" r="6" style="fill:black" />
+    <path d="M 232,259 Q 235,261,238,259 L 245,272 Q 235,277,225,272 Z" style="fill:black" />
+    <path d="M 241,242 Q 244,244,245,248 L 259,248 Q 258,235,248,230 Z" style="fill:black" />
+    <path d="M 225,249 Q 225,245,229,242 L 220,230 Q 212,238,210,249 Z" style="fill:black" />
+    <!-- 国旗 -->
+    <rect x="221" y="179" width="27" height="17" style="stroke:rgb(99,99,99);stroke-width:1;" />
+    <rect x="222" y="180" width="25" height="5" style="fill:white" />
+    <rect x="222" y="185" width="25" height="5" style="fill:blue;" />
+    <rect x="222" y="190" width="25" height="5" style="fill:red;" />
+</svg>
