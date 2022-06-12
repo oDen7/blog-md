@@ -1,1 +1,1 @@
-# front-end-blog-md
+# blog-md
