@@ -3,7 +3,7 @@
  * @Description: 
  * @Author: oDen7
  * @LastEditors: oDen7
- * @LastEditTime: 2022-06-12 13:53:24
+ * @LastEditTime: 2022-06-12 20:47:07
 -->
 # 概述
 
@@ -75,4 +75,5 @@ setTimeout(function () {
     console.log("12");
   });
 });
+// 输出：1，7，6，8，2，4，3，5，9，11，10，12
 ```

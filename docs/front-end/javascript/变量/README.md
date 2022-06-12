@@ -177,8 +177,8 @@
 ```
 
 ### 总结
-> var存在变量提升,const/let不存在
-> const,let存在暂时性死区,会报错,var会报undefined
-> 在全局作用域下,var变量会提升到最顶部,挂在到window上,let,const不会,打印window.变量时为undefined
-> var为函数作用域,提升至函数作用域顶部,let,const都为块级作用域,花括号包括即为块,块级作用域是函数作用域的子集.
-> const 不会修改for循环变量
+1. var存在变量提升,const/let不存在
+2. const,let存在暂时性死区,会报错,var会报undefined
+3. 在全局作用域下,var变量会提升到最顶部,挂在到window上,let,const不会,打印window.变量时为undefined
+4. var为函数作用域,提升至函数作用域顶部,let,const都为块级作用域,花括号包括即为块,块级作用域是函数作用域的子集.
+5. const 不会修改for循环变量

@@ -1,6 +1,8 @@
 # 概述
+
 > Object.DefineProperty 和 proxy 实现 双向数据绑定 原理
-### Object.DefineProperty 
+
+## Object.DefineProperty 
 - 通过 get() set() 方法对 监听对象进行 读取/写入
     ``` javascript
     Object.defineProperty(listen_obj),key, {

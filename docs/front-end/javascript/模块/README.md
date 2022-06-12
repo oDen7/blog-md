@@ -1,6 +1,6 @@
 # 概述
 
-### 同步模块定义 commonjs
+## 同步模块定义 commonjs
 
 1. 主要用于服务端,也可用于客户端
 2. 不能在浏览器中直接运行。
@@ -17,7 +17,7 @@ module.exports = {
 };
 ```
 
-### 异步模块定义 （AMD，Asynchronous Module Definition）
+## 异步模块定义 （AMD，Asynchronous Module Definition）
 
 1. 主要用于客户端,考虑网络延迟
 2. 模块声明自己的依赖，浏览器中的模块系统会按需获取依赖，并在依赖加载完成后立即执行依赖它们的模块
@@ -49,7 +49,7 @@ define('moduleA', ['require'], function(require) {
 });
 ```
 
-### 通用模块定义（UMD，Universal Module Definition）
+## 通用模块定义（UMD，Universal Module Definition）
 
 1. 可同时使用 amd 和 commonjs 模块
 2. 启动时检测使用那个模块系统,进行配置,通过立即执行函数包装
@@ -77,7 +77,7 @@ define('moduleA', ['require'], function(require) {
 });
 ```
 
-### es6 模块
+## es6 模块
 
 1. 作为一整块 JavaScript 代码而存在的
 2. 可以嵌入网页中,也可以外部引用

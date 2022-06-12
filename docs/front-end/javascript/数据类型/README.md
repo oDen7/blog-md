@@ -3,11 +3,11 @@
 > javscript中有6种数据类型:Undefined,Null,Boolean,Number,String,Symbol
 > 引用数据类型:Object,Array,Function
 
-### typeof
+## typeof
 > 返回:undefined,boolean,string,number,object(值为对象或为null),function,symbol
 
 
-#### undefined
+## undefined
 > var,let 声明未初始化,为undefined
 ```javascript
     let val;
@@ -17,11 +17,11 @@
 > 假值, Boolean(undefined) == false // true
 > 变量声明未初始化,变量未声明都为 undefined
 
-#### null
+## null
 > null 表示 空对象指针,声明的变量未来保存对象初始化为null
 > 假值, Boolean(null) == false // true
 
-#### boolean
+## boolean
 > true 1,false 0 
 
 ```javascript
@@ -32,7 +32,7 @@
    Boolean(undefined) === false // true
 ```
 
-#### number
+## number
 > 科学计数法:用与乘以10的给定次幂的数值
 ```JavaScript
     let floatNum = 3.125e7; // 31250000
@@ -69,13 +69,13 @@
                 console.log(parseFloat('')); // NaN
             ```
 
-#### NaN
+## NaN
 > not a number 不是一个数字,用于返回无法用数值表示的值.
 > 0,+0,-0相除会返回NaN
 > 分子为0,+0,-0,会返回 Infinity 或 -Infinity
 > 通过isNaN() 判断值是否为 Na
 
-#### string
+## string
 > 表示0或多个16位Unicode字符序列.
 > 一旦创建值不会改变
 ```javascript
@@ -195,7 +195,7 @@ world`;
     console.log(fun`\u00A9 ${val}`); // \u00A9 oDen7
 ```
 
-#### symbol
+## symbol
 > 创建唯一记号,用作非字符串的对象属性,符号实例唯一不可变
 > 确保对象属性唯一
 - symbol()
@@ -227,7 +227,7 @@ world`;
 ```
 
 
-#### object
+## object
 > 对象:一组数据和功能的集合.
 > 通过 new 操作符跟对象类型的名称创建.
 ```javascript

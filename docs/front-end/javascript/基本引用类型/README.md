@@ -10,7 +10,7 @@
     - Global
     - Math
 
-# 集合引用类型
+## 集合引用类型
 1. Object
 2. Array
 3. 定型数组

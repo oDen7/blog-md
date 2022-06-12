@@ -2,7 +2,7 @@
 
 > window,location,navigator,screen,history
 
-- window
+## window
 
   > 浏览器实例
   > ECMAScript 中的 Global 对象
@@ -73,7 +73,7 @@
     2. confirm()
     3. prompt()
 
-- location
+## location
 
   > 提供了当前窗口中加载文档的信息，以及通常的导航功能
   > window.location 和 document.location 指向同一个对象
@@ -91,7 +91,7 @@
   10. location.password // 域名前指定的密码
   11. location.origin // URL 的源地址。只读
 
-- navigator
+## navigator
 
   > 客户端标识浏览器的标准
 
@@ -153,7 +153,7 @@
   40. vibrate() // 触发设备振动
   41. webdriver // 返回浏览器当前是否被自动化程序控制
 
-- screen
+## screen
 
   > 保存的纯粹是客户端能力信息，也就是浏览器窗口外面的客户端显示器的信息
 
@@ -169,7 +169,7 @@
   10. width // 屏幕像素宽度
   11. orientation // 返回 Screen Orientation API 中屏幕的朝向
 
-- history
+## history
 
   > 表示当前窗口首次使用以来用户的导航历史记录
   > 因为 history 是 window 的属性，所以每个 window 都有自己的 history 对象。

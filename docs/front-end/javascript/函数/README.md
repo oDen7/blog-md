@@ -137,7 +137,7 @@ new Test();
 */
 ```
 
-- 函数属性与方法
+### 函数属性与方法
 
   1. length
      > 函数定义的命名参数个数
@@ -260,7 +260,7 @@ function outerFunction(condition) {
 5. 立即执行函数
 6. 闭包
 
-- 作为函数调用
+### 作为函数调用
 
 ```javascript
 function ninja() {}
@@ -271,7 +271,7 @@ samurai(); // 函数表达式作为函数被调用
 (function () {})(); // 会被立即调用的函数表达式，作为函数被调用
 ```
 
-- 作为方法调用
+### 作为方法调用
 
 ```javascript
 function whatsMyContext() {/
@@ -296,7 +296,7 @@ var ninja2 = {
 assert(ninja2.getMyThis() === ninja2,"Working with 2nd ninja"); // 使用ninja2对象的方法getMyThis来调用函数。函数上下文现在是ninja2
 ```
 
-- 作为构造函数调用
+### 作为构造函数调用
 
 ```javascript
 // 作为构造函数调用
@@ -313,7 +313,7 @@ assert(ninja1.skulk() === ninja1, "The 1st ninja is skulking");
 assert(ninja2.skulk() === ninja2, "The 2nd ninja is skulking"); // 检测已创建对象中的skulk方法。每个方法都应该返回自身已创建的对象
 ```
 
-- 构造函数 返回 原始值 或 对象时 的区别
+### 构造函数 返回 原始值 或 对象时 的区别
   1. 如果构造函数返回一个对象，则该对象将作为整个表达式的值返回，而传入构造函数的 this 将被丢弃。
   2. 如果构造函数返回的是非对象类型，则忽略返回值，返回新创建的对象
 
@@ -353,7 +353,7 @@ assert(emperor.rules === false, "The puppet does not know how to rule!");
 // 测试表明，变量emperor的值为由构造函数返回的对象，而不是new表达式所返回的对象
 ```
 
-- 使用 apply 和 call 方法调用
+### 使用 apply 和 call 方法调用
   - 最终作为函数上下文（可以通过 this 参数隐式引用到）传递给执行函数的对象不同。
 
 1. 方法 - 即为方法所在的对象
@@ -368,7 +368,7 @@ assert(emperor.rules === false, "The puppet does not know how to rule!");
 })();
 ```
 
-- 闭包
+### 闭包
 
 ```javascript
 var name = "The Window";
@@ -395,7 +395,7 @@ var object = {
 alert(object.getNameFunc()()); //"My Object"
 ```
 
-- 高阶函数
+### 高阶函数
   > 把函数作为参数，或是将函数作为返回值的函数
 
 ```javascript
