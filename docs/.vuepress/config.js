@@ -11,7 +11,7 @@ module.exports = {
   description: '个人学习记录,成长日记',
   base: "/blog-md/",
   theme: defaultTheme({
-    logo: 'https://vuejs.org/images/logo.png',
+    logo: 'https://raw.githubusercontent.com/oDen7/blog-imgUrl/main/40536961.jpg',
     sidebar: [{
         text: "前端",
         collapsible: true,
