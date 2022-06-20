@@ -70,6 +70,10 @@ const front = [{
                 text: '客户端检测',
                 children: ['/front-end/javascript/客户端检测/README.md']
             },
+            {
+                text: "上传",
+                children: ['/front-end/javascript/上传/README.md']
+            }
         ],
     },
     {
