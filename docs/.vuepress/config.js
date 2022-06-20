@@ -25,6 +25,13 @@ module.exports = {
           children: ['/project/algorithm-diagram-javascript.md']
         }, ]
       },
+      {
+        text: "杂货铺",
+        collapsible: true,
+        children: [
+
+        ]
+      },
     ]
   })
 }
