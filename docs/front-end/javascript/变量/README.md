@@ -68,7 +68,7 @@
 
 - 暂时性死区
 > let在未声明情况下使用会报错,变量不会被提升
-```JavaScript
+```javascript
    console.log(name); // undefined
    var name = "Matt"; // 被提升
 
@@ -121,7 +121,7 @@
 > var 会渗透到函数体外部
 > let 的作用域仅限for循环内部
 
-```JavaScript
+```javascript
     for(var i=0;i<5;++i){
         setTimeout(()=>console.log(i),0)
     }
@@ -131,20 +131,20 @@
 
 ### const
 > 声明必须初始化,改变普通类型的const变量会报错
-```JavaScript
+```javascript
    const a; // Uncaught SyntaxError: Missing initializer in const declaration
 
    const b =1;
    b=2; // Uncaught TypeError: Assignment to constant variable.
 ```
 > 不能重复声明
-```JavaScript
+```javascript
    const a =1;
    const a =2; // Uncaught SyntaxError: Identifier 'a' has already been declared
 ```
 
 > 块级作用域
-```JavaScript
+```javascript
    const a =1;
    if(true){
         const a =2;
@@ -153,7 +153,7 @@
 ```
 
 > const 接收对象或数组时,改变属性或数组成员, const 不会限制
-```JavaScript
+```javascript
    const arr = [1,2,3];
    arr[0] = 10;
    console.log(arr); //  [10, 2, 3]

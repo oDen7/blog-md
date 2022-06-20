@@ -1,7 +1,10 @@
 # 概述
 
-> javscript中有6种数据类型:Undefined,Null,Boolean,Number,String,Symbol
-> 引用数据类型:Object,Array,Function
+> javscript中有6种数据类型:
+> undefined,Null,boolean,number,string,symbol
+> 
+> 引用数据类型:
+> Object,Array,Function
 
 ## typeof
 > 返回:undefined,boolean,string,number,object(值为对象或为null),function,symbol
@@ -34,7 +37,7 @@
 
 ## number
 > 科学计数法:用与乘以10的给定次幂的数值
-```JavaScript
+```javascript
     let floatNum = 3.125e7; // 31250000
 ```
 > 浮点运算没有整数精确,使用ieee 754数值都有此问题
@@ -99,7 +102,7 @@
     console.log(val1.toString()); // Uncaught TypeError: Cannot read properties of null (reading 'toString')
 ```
 - toString() 方法可以传入进制数
-```JavaScript
+```javascript
     let num = 10;
     console.log(num.toString()); // "10"
     console.log(num.toString(2)); // "1010"
@@ -108,7 +111,7 @@
     console.log(num.toString(16)); // "a"
 ```
 - String()方法
-```JavaScript
+```javascript
     console.log(String(10)); // "10"
     console.log(String(false)); // "false"
     console.log(String(undefined)); // "undefined"
@@ -117,7 +120,7 @@
 ```
 - 模板字符串 和 插值表达式
 > 模板字符串保留换行字符,可跨行定义字符串.
-```JavaScript
+```javascript
     let str = 'hello\nworld';
     let str1 = `hello
 world`;
@@ -127,7 +130,7 @@ world`;
 ```
 > 插值表达式
 > 字符串插值,可一个或多个
-```JavaScript
+```javascript
     let val1 = "hello";
     let val2 = "world";
     let val3 = `${val1}${val2}`;
@@ -136,7 +139,7 @@ world`;
 > 所有插值强制使用 toString()转化为字符串
 - 标签函数
 > 接收插值记号分割后的模板和表达式求值
-```JavaScript
+```javascript
     let a = 6;
     let b = 9;
     let fun = (str,aVal,bVal,sumVal)=>{
@@ -211,7 +214,7 @@ world`;
    // 由于其唯一性,所以不会覆盖对象中同名属性
 ```
 - Symbol()不能用作构造函数
-```JavaScript
+```javascript
     let bool = new Boolean(); // typeof(bool)  "object"
     let str = new String(); // typeof(str)  "object"
     let mynum = new Number(); // typeof(mynum)  "object"
@@ -222,7 +225,7 @@ world`;
     let newSymbol = Object(symbol1); // typeof(newSymbol) "object"
 ```
 - 使用全局符号注册表
-```Javascript
+```javascript
 
 ```
 

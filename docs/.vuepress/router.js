@@ -35,8 +35,8 @@ const front = [{
                 children: ['/front-end/javascript/函数/README.md']
             },
             {
-                text: '客户端检测',
-                children: ['/front-end/javascript/客户端检测/README.md']
+                text: '客户端存储',
+                children: ['/front-end/javascript/客户端存储/README.md']
             },
             {
                 text: '类',
@@ -65,6 +65,10 @@ const front = [{
             {
                 text: '双向数据绑定',
                 children: ['/front-end/javascript/双向数据绑定/README.md']
+            },
+            {
+                text: '客户端检测',
+                children: ['/front-end/javascript/客户端检测/README.md']
             },
         ],
     },

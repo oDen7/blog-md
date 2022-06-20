@@ -22,7 +22,7 @@ module.exports = {
         collapsible: true,
         children: [{
           text: '算法图解',
-          children: ['/project/algorithm-diagram-javascript/README.md']
+          children: ['/project/algorithm-diagram-javascript.md']
         }, ]
       },
     ]
