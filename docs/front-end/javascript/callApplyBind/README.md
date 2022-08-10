@@ -8,9 +8,11 @@
 > 两者作用相同,传参方式不同
 
 ### bind
-> 改变this指向后,返回当前方法,用于调用
-> 返回当前方法 举个栗子:
-> let updateVal = function(){
->      console.log("=====> hello world");
-> }
-> console.log(updateVal);
+> 改变this指向后,返回当前方法,用于调用返回当前方法 
+```javascript 
+// 举个栗子:
+let updateVal = function(){
+    console.log("=====> hello world");
+}
+console.log(updateVal);
+```

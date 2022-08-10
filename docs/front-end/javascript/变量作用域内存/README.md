@@ -46,52 +46,51 @@
 2. 隐藏类和删除操作
 - 运行期间,v8创建的对象与隐藏类相关联,以跟踪它们的特征.能共享相同隐藏类的对象性能更好
 - 先创建再补充(ready-fire-aim)式的动态属性赋值,并一次性声明所有属性
-> ```javascript 
-> function Article(opt_author) {
->    this.title = 'Inauguration Ceremony Features Kazoo Band'; 
->    this.author = opt_author; 
-> } 
-> let a1 = new Article(); 
-> let a2 = new Article('Jake'); 
-> ```
+```javascript 
+function Article(opt_author) {
+    this.title = 'Inauguration Ceremony Features Kazoo Band'; 
+    this.author = opt_author; 
+} 
+let a1 = new Article(); 
+let a2 = new Article('Jake'); 
+```
 - 将不使用的值设为 null,可以保持隐藏类不变和继续共享,也能达到删除引用值供垃圾回回收程序回收
 
 ### 内存泄漏
 1. 初始化不声明变量会导致一直将值挂在到window上无法回收
 2. 定时器导致内存泄漏
 ```javascript
-    let name = 'Jake';
-    setInterval(() => { 
-        console.log(name); 
-    }, 100);
-    // 只要定时器一直运行，回调函数中引用的 name 就会一直占用内存。
+let name = 'Jake';
+setInterval(() => { 
+    console.log(name); 
+}, 100);
+// 只要定时器一直运行，回调函数中引用的 name 就会一直占用内存。
 
-    let outer = function() {
-        let name = 'Jake'; 
-        return function() { 
-            return name; 
-        }; 
-    };
-    // 调用 outer()会导致分配给 name 的内存被泄漏。以上代码执行后创建了一个内部闭包，只要返回的函数存在就不能清理 name，因为闭包一直在引用着它。
+let outer = function() {
+    let name = 'Jake'; 
+    return function() { 
+        return name; 
+    }; 
+};
+// 调用 outer()会导致分配给 name 的内存被泄漏。以上代码执行后创建了一个内部闭包，只要返回的函数存在就不能清理 name，因为闭包一直在引用着它。
 ```
 
 3. 静态分配与对象池
 - 浏览器决定何时运行垃圾回收程序的一个标准就是对象更替的速度。如果有很多对象被初始化，然后一下子又都超出了作用域，那么浏览器就会采用更激进的方式调度垃圾回收程序运行，这样当然会影响性能。
 ```javascript
-    function addVector(a, b) {
-        let resultant = new Vector(); 
-        resultant.x = a.x + b.x; 
-        resultant.y = a.y + b.y; 
-        return resultant; 
-    } 
-    //该问题的解决方案是不要动态创建矢量对象，比如可以修改上面的函数，让它使用一个已有的矢量对象
+function addVector(a, b) {
+    let resultant = new Vector(); 
+    resultant.x = a.x + b.x; 
+    resultant.y = a.y + b.y; 
+    return resultant; 
+} 
+//该问题的解决方案是不要动态创建矢量对象，比如可以修改上面的函数，让它使用一个已有的矢量对象
 
-    function addVector(a, b, resultant) {
-        resultant.x = a.x + b.x; 
-        resultant.y = a.y + b.y; 
-        return resultant; 
-    } 
-
+function addVector(a, b, resultant) {
+    resultant.x = a.x + b.x; 
+    resultant.y = a.y + b.y; 
+    return resultant; 
+} 
 ```
     
 - 对象池

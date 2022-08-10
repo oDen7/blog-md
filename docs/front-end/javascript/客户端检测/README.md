@@ -24,109 +24,116 @@
 
   > 通过浏览器的用户代理字符串确定使用的是什么浏览器
 
-  - 用户代理的历史 > HTTP 规范（1.0 和 1.1）要求浏览器应该向服务器发送包含浏览器名称和版本信息的简短字符串 - RFC 2616（HTTP 1.1）描述 用户代理 字符串 模板 > 产品标记用于通过软件名称和版本来标识通信产品的身份。多数使用产品标记的字段也允许列出属于应用主要部分的子产品，以空格分隔。按照约定，产品按照标识应用重要程度的先后顺序列出。
+  - 用户代理的历史 
+    > HTTP 规范（1.0 和 1.1）要求浏览器应该向服务器发送包含浏览器名称和版本信息的简短字符串 - RFC 2616（HTTP 1.1）描述 用户代理 字符串 模板 
+    > 
+    > 产品标记用于通过软件名称和版本来标识通信产品的身份。多数使用产品标记的字段也允许列出属于应用主要部分的子产品，以空格分隔。按照约定，产品按照标识应用重要程度的先后顺序列出。
 
-        1. 早期浏览器
-            1. Mosaic
-                > 美国国家超级计算应用中心（NCSA，National Center for Supercomputing Applications）发布于 1993年的 Mosaic 是早期 Web 浏览器的代表，其用户代理字符串相当简单
-                > Mosaic/0.9
-            2. Mozilla
-                > 在网景公司准备开发浏览器时，代号确定为“Mozilla”（Mosaic Killer 的简写）
-                - 第一个公开发行版Netscape Navigator 2 的用户代理字符串:
-                    > Mozilla/Version [Language] (Platform; Encryption)
-                    > Mozilla/2.02 [fr] (WinNT; I)
-                    - Language：语言代码，表示浏览器的目标使用语言。
-                    - Platform：表示浏览器所在的操作系统和/或平台。
-                    - Encryption：包含的安全加密类型，可能的值是 U（128 位加密）、I（40 位加密）和 N（无加密）
+    1. 早期浏览器
+      1. Mosaic
+          > 美国国家超级计算应用中心（NCSA，National Center for Supercomputing Applications）发布于 1993年的 Mosaic 是早期 Web 浏览器的代表，其用户代理字符串相当简单
+          > Mosaic/0.9
+                
+      2. Mozilla
+          > 在网景公司准备开发浏览器时，代号确定为“Mozilla”（Mosaic Killer 的简写）
+          
+          - 第一个公开发行版Netscape Navigator 2 的用户代理字符串:
+            > Mozilla/Version [Language] (Platform; Encryption)
+            > Mozilla/2.02 [fr] (WinNT; I)
+              - Language：语言代码，表示浏览器的目标使用语言。
+              - Platform：表示浏览器所在的操作系统和/或平台。
+              - Encryption：包含的安全加密类型，可能的值是 U（128 位加密）、I（40 位加密）和 N（无加密）
 
-        2. Netscape Navigator 3 和 IE3
-            > 用户代理字符串也发生了一些小变化，删除了语言信息，并将操作系统或系统 CPU 信息（OS-or-CPU description）等列为可选信息
-            > Mozilla/Version (Platform; Encryption [; OS-or-CPU description])
-            > Mozilla/3.0 (Win95; U)
+    2. Netscape Navigator 3 和 IE3
+      > 用户代理字符串也发生了一些小变化，删除了语言信息，并将操作系统或系统 CPU 信息（OS-or-CPU description）等列为可选信息
+      > Mozilla/Version (Platform; Encryption [; OS-or-CPU description])
+      > Mozilla/3.0 (Win95; U)
 
-            - ie3
-                > 因为当时 Netscape Navigator 是市场占有率最高的浏览器，很多服务器在返回网页之前都会特意检测其用户代理字符串。
-                > 如果 IE 因此打不开网页，那么这个当时初出茅庐的浏览器就会遭受重创
-                > IE 就在用户代理字符串中添加了兼容 Netscape 用户代理字符串的内容
-                > Mozilla/2.0 (compatible; MSIE Version; Operating System)
+      - ie3
+        > 因为当时 Netscape Navigator 是市场占有率最高的浏览器，很多服务器在返回网页之前都会特意检测其用户代理字符串。
+        > 如果 IE 因此打不开网页，那么这个当时初出茅庐的浏览器就会遭受重创
+        > IE 就在用户代理字符串中添加了兼容 Netscape 用户代理字符串的内容
+        > Mozilla/2.0 (compatible; MSIE Version; Operating System)
 
-        3. Netscape Communicator 4 和 IE4~8
-            - Netscape Communicator 4
-                > Mozilla/Version (Platform; Encryption [; OS-or-CPU description])
-            - IE4
-                > Mozilla/4.0 (compatible; MSIE Version; Operating System)
+    3. Netscape Communicator 4 和 IE4~8
+      - Netscape Communicator 4
+        > Mozilla/Version (Platform; Encryption [; OS-or-CPU description])
+      - IE4
+        > Mozilla/4.0 (compatible; MSIE Version; Operating System)
 
-                - 在 IE4.5（只针对 Mac）面世时，Mozilla 的版本号还是 4，IE 的版本号却变了
-                    > Mozilla/4.0 (compatible; MSIE 4.5; Mac_PowerPC)
-                    - IE8 在用户代理字符串中添加了额外的标识“Trident”，就是浏览器渲染引擎的代号。
-                        > Mozilla/4.0 (compatible; MSIE Version; Operating System; Trident/TridentVersion)
-                        > 这个新增的“Trident”是为了让开发者知道什么时候 IE8 运行兼容模式。
-                        > 在兼容模式下，MSIE 的版本会变成 7，但 Trident 的版本不变
+        - 在 IE4.5（只针对 Mac）面世时，Mozilla 的版本号还是 4，IE 的版本号却变了
+          > Mozilla/4.0 (compatible; MSIE 4.5; Mac_PowerPC)
+          - IE8 在用户代理字符串中添加了额外的标识“Trident”，就是浏览器渲染引擎的代号。
+            > Mozilla/4.0 (compatible; MSIE Version; Operating System; Trident/TridentVersion)
+            > 这个新增的“Trident”是为了让开发者知道什么时候 IE8 运行兼容模式。
+            > 在兼容模式下，MSIE 的版本会变成 7，但 Trident 的版本不变
 
-        4. IE9
-            > Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)
-            > 如果 IE9 运行兼容模式，则会恢复旧版的 Mozilla 和 MSIE 版本号，但 Trident 的版本号还是 5.0。
-            > Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; Trident/5.0)
+    4. IE9
+      > Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)
+      > 如果 IE9 运行兼容模式，则会恢复旧版的 Mozilla 和 MSIE 版本号，但 Trident 的版本号还是 5.0。
+      > Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; Trident/5.0)
 
-        5. Gecko
-            > Gecko 渲染引擎是 Firefox 的核心。
-            > Mozilla/MozillaVersion (Platform; Encryption; OS-or-CPU; Language;PrereleaseVersion)Gecko/GeckoVersionApplicationProduct/ApplicationProductVersion
-            - MozillaVersion: Mozilla 版本
-            - Platform : 浏览器所在的平台。可能的值包括 Windows、Mac 和 X11（UNIX X-Windows）
-            - Encryption : 加密能力：U 表示 128 位，I 表示 40 位，N 表示无加密
-            - OS-or-CPU : 浏览器所在的操作系统或计算机处理器类型。如果是 Windows 平台，则这里是 Windows 的版本（如 WinNT、Win95）。如果是 Mac 平台，则这里是 CPU 类型（如 68k、PPC for PowerPC 或 MacIntel）。如果是 X11平台，则这里是通过 uname -sm 命名得到的 UNIX 操作系统名
-            - Language : 浏览器的目标使用语言
-            - Prerelease Version : 最初的设想是 Mozilla预发布版的版本号，现在表示 Gecko 引擎的版本号
-            - GeckoVersion : 以 yyyymmdd 格式的日期表示的 Gecko 渲染引擎的版本
-            - ApplicationProduct : 使用 Gecko 的产品名称。可能是 Netscape、Firefox 等
-            - ApplicationProductVersion : ApplicationProduct 的版本，区别于 MozillaVersion 和 GeckoVersion
-            > 所有这些字符串都表示使用的是基于 Gecko 的浏览器（只是版本不同）。有时候，相比于知道特定的浏览器，知道是不是基于 Gecko 才更重要。从第一个基于 Gecko 的浏览器发布开始，Mozilla 版本就是 5.0，一直没有变过。以后也不太可能会变
-            - 主要的改变
-                1. 去掉了语言标记（即前面例子中的"en-US"）。
-                2. 在浏览器使用强加密时去掉加密标记（因为是默认了）。这意味着 I 和 N 还可能出现，但 U 不可能出现了
-                3. 去掉了 Windows 平台上的平台标记，这是因为跟 OS-or-CPU 部分重复了，否则两个地方都会有Windows
-                4. GeckoVersion 固定为"Gecko/20100101"
+    5. Gecko
+      > Gecko 渲染引擎是 Firefox 的核心。
+      > Mozilla/MozillaVersion (Platform; Encryption; OS-or-CPU; Language;PrereleaseVersion)Gecko/GeckoVersionApplicationProduct/ApplicationProductVersion
+      - MozillaVersion: Mozilla 版本
+      - Platform : 浏览器所在的平台。可能的值包括 Windows、Mac 和 X11（UNIX X-Windows）
+      - Encryption : 加密能力：U 表示 128 位，I 表示 40 位，N 表示无加密
+      - OS-or-CPU : 浏览器所在的操作系统或计算机处理器类型。如果是 Windows 平台，则这里是 Windows 的版本（如 WinNT、Win95）。如果是 Mac 平台，则这里是 CPU 类型（如 68k、PPC for PowerPC 或 MacIntel）。如果是 X11平台，则这里是通过 uname -sm 命名得到的 UNIX 操作系统名
+      - Language : 浏览器的目标使用语言
+      - Prerelease Version : 最初的设想是 Mozilla预发布版的版本号，现在表示 Gecko 引擎的版本号
+      - GeckoVersion : 以 yyyymmdd 格式的日期表示的 Gecko 渲染引擎的版本
+      - ApplicationProduct : 使用 Gecko 的产品名称。可能是 Netscape、Firefox 等
+      - ApplicationProductVersion : ApplicationProduct 的版本，区别于 MozillaVersion 和 GeckoVersion
+          > 所有这些字符串都表示使用的是基于 Gecko 的浏览器（只是版本不同）。有时候，相比于知道特定的浏览器，知道是不是基于 Gecko 才更重要。从第一个基于 Gecko 的浏览器发布开始，Mozilla 版本就是 5.0，一直没有变过。以后也不太可能会变
+      - 主要的改变
+          1. 去掉了语言标记（即前面例子中的"en-US"）。
+          2. 在浏览器使用强加密时去掉加密标记（因为是默认了）。这意味着 I 和 N 还可能出现，但 U 不可能出现了
+          3. 去掉了 Windows 平台上的平台标记，这是因为跟 OS-or-CPU 部分重复了，否则两个地方都会有Windows
+          4. GeckoVersion 固定为"Gecko/20100101"
 
-        6. webkit
-            > Mozilla/5.0 (Platform; Encryption; OS-or-CPU; Language)AppleWebKit/AppleWebKitVersion (KHTML, like Gecko) Safari/SafariVersion
-            > 所有基于 WebKit 的浏览器都将自己标识为 Mozilla 5.0，与所有基于 Gecko 的浏览器一样。
-            > Safari 与 Mozilla 兼容，不能让网站以为用户使用了不受支持的浏览器而把 Safari 排斥在外。
-            - Safari 的用户代理字符串在第 3 版时有所改进。下面的版本标记现在用来表示 Safari 实际的版本号
-                > Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en) AppleWebKit/522.15.5(KHTML, like Gecko) Version/3.0.3 Safari/522.15.5
+    6. webkit
+      > Mozilla/5.0 (Platform; Encryption; OS-or-CPU; Language)AppleWebKit/AppleWebKitVersion (KHTML, like Gecko) Safari/SafariVersion
+      > 所有基于 WebKit 的浏览器都将自己标识为 Mozilla 5.0，与所有基于 Gecko 的浏览器一样。
+      > Safari 与 Mozilla 兼容，不能让网站以为用户使用了不受支持的浏览器而把 Safari 排斥在外。
+      - Safari 的用户代理字符串在第 3 版时有所改进。下面的版本标记现在用来表示 Safari 实际的版本号
+          > Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en) AppleWebKit/522.15.5(KHTML, like Gecko) Version/3.0.3 Safari/522.15.5
 
-        7. Konqueror
-            - Konqueror是与 KDE Linux桌面环境打包发布的浏览器，基于开源渲染引擎 KHTML
-            - Konqueror 决定采用 Internet Explore 的用户代理字符串格式,并做了一些修改
-                > Mozilla/5.0 (compatible; Konqueror/Version; OS-or-CPU) KHTML/KHTMLVersion(like Gecko)
+    7. Konqueror
+      - Konqueror是与 KDE Linux桌面环境打包发布的浏览器，基于开源渲染引擎 KHTML
+      - Konqueror 决定采用 Internet Explore 的用户代理字符串格式,并做了一些修改
+          > Mozilla/5.0 (compatible; Konqueror/Version; OS-or-CPU) KHTML/KHTMLVersion(like Gecko)
 
-        8. Chrome
-            - 谷歌的 Chrome 浏览器使用 Blink 作为渲染引擎，使用 V8 作为 JavaScript 引擎。
-            - Chrome 的用户代理字符串包含所有 WebKit 的信息，另外又加上了 Chrome 及其版本的信息
-            > Mozilla/5.0 (Platform; Encryption; OS-or-CPU; Language)AppleWebKit/AppleWebKitVersion (KHTML, like Gecko) Chrome/ChromeVersion Safari/SafariVersion
-        9. Opera
-            - Opera 默认的用户代理字符串是所有现代浏览器中最符合逻辑的，因为它正确标识了自己和版本
-            - Opera8
-                > Opera/Version (OS-or-CPU; Encryption) [Language]
-            - Opera 9
-                1. 把自己标识为别的浏览器，如Firefox 或 IE。这时候的字符串跟 Firefox 和 IE 的一样，只不过末尾会多一个"Opera"及其版本号。
-                    > Mozilla/5.0 (Windows NT 5.1; U; en; rv:1.8.1) Gecko/20061208 Firefox/2.0.0 Opera 9.50
-                2. 伪装成 Firefox 或 IE
-                    > 这种情况下的用户代理字符串与 Firefox 和 IE 返回的一样，末尾也没有"Opera"及其版本信息
-            - Opera 10
-                > Opera/9.80 (OS-or-CPU; Encryption; Language) Presto/PrestoVersion Version/Version
-            - 最近
-                > Opera 最近的版本已经改为在更标准的字符串末尾追加"OPR"标识符和版本号。这样，除了末尾的"OPR"标识符和版本号，字符串的其他部分与 WebKit 浏览器是类似的。
-                > Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)Chrome/65.0.3325.181 Safari/537.36 OPR/52.0.2871.64
+    8. Chrome
+        - 谷歌的 Chrome 浏览器使用 Blink 作为渲染引擎，使用 V8 作为 JavaScript 引擎。
+        - Chrome 的用户代理字符串包含所有 WebKit 的信息，另外又加上了 Chrome 及其版本的信息
+        > Mozilla/5.0 (Platform; Encryption; OS-or-CPU; Language)AppleWebKit/AppleWebKitVersion (KHTML, like Gecko) Chrome/ChromeVersion Safari/SafariVersion
 
-        10.  iOS 与 Android
-            - iOS 和 Android 移动操作系统上默认的浏览器都是基于 WebKit 的，因此具有与相应桌面浏览器一样的用户代理字符串。
-            - ios
-                > Mozilla/5.0 (Platform; Encryption; OS-or-CPU like Mac OS X; Language)AppleWebKit/AppleWebKitVersion (KHTML, like Gecko) Version/BrowserVersionMobile/MobileVersion Safari/SafariVersion
-                > 用于辅助判断 Mac 操作系统的"like Mac OS X"和"Mobile"相关的标识
-            - Android
-                > Mozilla/5.0 (Linux; U; Android 2.2; en-us; Nexus One Build/FRF91)AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
-            - 区别
-                1. 没有Mobile 后面的版本号（"Mobile"标识还有）
+    9. Opera
+      - Opera 默认的用户代理字符串是所有现代浏览器中最符合逻辑的，因为它正确标识了自己和版本
+      - Opera8
+          > Opera/Version (OS-or-CPU; Encryption) [Language]
+      - Opera 9
+          1. 把自己标识为别的浏览器，如Firefox 或 IE。这时候的字符串跟 Firefox 和 IE 的一样，只不过末尾会多一个"Opera"及其版本号。
+            > Mozilla/5.0 (Windows NT 5.1; U; en; rv:1.8.1) Gecko/20061208 Firefox/2.0.0 Opera 9.50
+          2. 伪装成 Firefox 或 IE
+            > 这种情况下的用户代理字符串与 Firefox 和 IE 返回的一样，末尾也没有"Opera"及其版本信息
+      - Opera 10
+        > Opera/9.80 (OS-or-CPU; Encryption; Language) Presto/PrestoVersion Version/Version
+
+      - 最近
+        > Opera 最近的版本已经改为在更标准的字符串末尾追加"OPR"标识符和版本号。这样，除了末尾的"OPR"标识符和版本号，字符串的其他部分与 WebKit 浏览器是类似的。
+        > Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)Chrome/65.0.3325.181 Safari/537.36 OPR/52.0.2871.64
+
+    10.  iOS 与 Android
+      - iOS 和 Android 移动操作系统上默认的浏览器都是基于 WebKit 的，因此具有与相应桌面浏览器一样的用户代理字符串。
+      - ios
+          > Mozilla/5.0 (Platform; Encryption; OS-or-CPU like Mac OS X; Language)AppleWebKit/AppleWebKitVersion (KHTML, like Gecko) Version/BrowserVersionMobile/MobileVersion Safari/SafariVersion
+          > 用于辅助判断 Mac 操作系统的"like Mac OS X"和"Mobile"相关的标识
+      - Android
+          > Mozilla/5.0 (Linux; U; Android 2.2; en-us; Nexus One Build/FRF91)AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
+      - 区别
+          1. 没有Mobile 后面的版本号（"Mobile"标识还有）
 
 ##  浏览器分析
 

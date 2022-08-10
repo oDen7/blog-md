@@ -22,37 +22,37 @@
 
   - fs.open()方法来作为例子，探索 Node 与底层之间是如何执行异步 I/O 调用以及回调函数究竟是如何被调用执行的？
 
-        ```javascript
-        fs.open = function (path, flags, mode, callback) {
-          // ...
-          binding.open(
-            pathModule._makeLong(path),
-            stringToFlags(flags),
-            mode,
-            callback
-          );
-        };
-        ```
+    ```javascript
+    fs.open = function (path, flags, mode, callback) {
+      // ...
+      binding.open(
+        pathModule._makeLong(path),
+        stringToFlags(flags),
+        mode,
+        callback
+      );
+    };
+    ```
 
-        1. 从 JavaScript 调用 Node 的核心模块
-        2. 核心模块调用 C++内建模块
-        3. 内建模块通过 libuv 进行系统调用
-           1. 这里 libuv 作为封装层,有两个平台的实现，实质上是调用了 uv_fs_open()方法
-           2. 在uv_fs_open()的调用过程中，我们创建了一个FSReqWrap请求对象
-           3. 从 JavaScript 层传入的参数和当前方法都被封装在这个请求对象中，其中我们最为关注的回调函数则被设置在这个对象的 oncomplete_sym 属性
-               - req_wrap->object_->Set(oncomplete_sym, callback);
-           4. 对象包装完毕后，在Windows下，则调用 QueueUserWorkItem() 方法将这个FSReqWrap对象推入线程池中等待执行
-               - QueueUserWorkItem(&uv_fs_thread_proc,req,WT_EXECUTEDEFAULT)
-                  - 参数
-                    1. 将要执行的方法的引用，这里引用的是uv_fs_thread_proc
-                    2. uv_fs_thread_proc运行时所需要的参数
-                    3. 执行的标志
+    1. 从 JavaScript 调用 Node 的核心模块
+    2. 核心模块调用 C++内建模块
+    3. 内建模块通过 libuv 进行系统调用
+        1. 这里 libuv 作为封装层,有两个平台的实现，实质上是调用了 uv_fs_open()方法
+        2. 在uv_fs_open()的调用过程中，我们创建了一个FSReqWrap请求对象
+        3. 从 JavaScript 层传入的参数和当前方法都被封装在这个请求对象中，其中我们最为关注的回调函数则被设置在这个对象的 oncomplete_sym 属性
+            - req_wrap->object_->Set(oncomplete_sym, callback);
+        4. 对象包装完毕后，在Windows下，则调用 QueueUserWorkItem() 方法将这个FSReqWrap对象推入线程池中等待执行
+            - QueueUserWorkItem(&uv_fs_thread_proc,req,WT_EXECUTEDEFAULT)
+              - 参数
+                1. 将要执行的方法的引用，这里引用的是uv_fs_thread_proc
+                2. uv_fs_thread_proc运行时所需要的参数
+                3. 执行的标志
 
-              > uv_fs_thread_proc()方法会根据传入参数的类型调用相应的底层函数。以uv_fs_open()为例，实际上调用fs_open()方法。
+          > uv_fs_thread_proc()方法会根据传入参数的类型调用相应的底层函数。以uv_fs_open()为例，实际上调用fs_open()方法。
 
-        4. 至此，JavaScript调用立即返回，由JavaScript层面发起的异步调用的第一阶段就此结束
-        5. JavaScript线程可以继续执行当前任务的后续操作
-          > 当前的I/O操作在线程池中等待执行，不管它是否阻塞I/O，都不会影响到JavaScript线程的后续执行，如此就达到了异步的目的
+    4. 至此，JavaScript调用立即返回，由JavaScript层面发起的异步调用的第一阶段就此结束
+    5. JavaScript线程可以继续执行当前任务的后续操作
+      > 当前的I/O操作在线程池中等待执行，不管它是否阻塞I/O，都不会影响到JavaScript线程的后续执行，如此就达到了异步的目的
 
 ### 执行回调
 

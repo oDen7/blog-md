@@ -390,7 +390,7 @@
                 ```
 
         - Deferred
-            ````javascript
+            ```javascript
             var promisify = function (res) {
                 var deferred = new Deferred();
                 var result = "";
@@ -415,7 +415,7 @@
                 // progress
                 console.log('BODY: ' + chunk);
                 });
-            ````
+            ```
 
         - promise 和 Deferred 差异
           1. Deferred 主要是用于内部，用于维护异步模型的状态；

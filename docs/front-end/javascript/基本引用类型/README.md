@@ -24,12 +24,12 @@
         3. 查找速度 - 涉及到大量查找用 object ,  Object 当成数组使用（比如使用连续整数作为属性），浏览器引擎可以优化，在内存中使用更高效
         4. 删除性能 - 涉及到大量删除用 map,删除比 插入 和 查找 更快
 ```javascript
-    const obj = {a:1};
-    let map = new Map();
-    map.set("key",obj);
-    obj.a = 2;
-    console.log(obj);
-    map.get("key");
+const obj = {a:1};
+let map = new Map();
+map.set("key",obj);
+obj.a = 2;
+console.log(obj);
+map.get("key");
 ```
 
 5. WeakMap
@@ -40,17 +40,17 @@
         1. 私有变量
         2. DOM节点元数据
 ``` javascript 
-    const wm = new WeakMap();
-    const container = { 
-        key: {} 
-    }; 
-    wm.set(container.key, "val"); 
+const wm = new WeakMap();
+const container = { 
+    key: {} 
+}; 
+wm.set(container.key, "val"); 
 
-    wm.get(container.key);
-    const fun =()=>{
-        container.key = null;
-    };
-    // fun();
+wm.get(container.key);
+const fun =()=>{
+    container.key = null;
+};
+// fun();
 ```
 6. Set
     - Set可以用任何JavaScript数据类型作为值  使用全等进行比较
@@ -64,16 +64,16 @@
 7. WeakSet
     - 类似于 weakMap , 但仅存 具体值(value) 
 ``` javascript 
-    const wm = new WeakSet();
-    const container = { 
-        key: {} 
-    }; 
-    wm.add(container.key, "val"); 
+const wm = new WeakSet();
+const container = { 
+    key: {} 
+}; 
+wm.add(container.key, "val"); 
 
-    wm.has(container.key);
-    const fun =()=>{
-        container.key = null;
-    };
-    // fun();
-    // wm.has(container.key);
+wm.has(container.key);
+const fun =()=>{
+    container.key = null;
+};
+// fun();
+// wm.has(container.key);
 ```

@@ -1,10 +1,3 @@
-<!--
- * @File Name: 
- * @Description: 
- * @Author: oDen7
- * @LastEditors: oDen7
- * @LastEditTime: 2022-06-12 20:47:07
--->
 # 概述
 
 - 基本原则

@@ -17,11 +17,10 @@ const front = [{
         text: '基本引用类型',
         children: ['/front-end/javascript/基本引用类型/README.md']
     },
-    {
-        text: '操作符',
-        children: ['/front-end/javascript/操作符/README.md']
-    },
-
+    // {
+    //     text: '操作符',
+    //     children: ['/front-end/javascript/操作符/README.md']
+    // },
     {
         text: '闭包',
         children: ['/front-end/javascript/闭包/README.md']
