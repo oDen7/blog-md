@@ -1,7 +1,9 @@
 # 概述
 
 > 文档对象模型（DOM，Document Object Model） 是 HTML 和 XML 文档的编程接口。
+> 
 > DOM 表 示由多层节点构成的文档，通过它开发者可以添加、删除和修改页面的各个部分。
+> 
 > 脱胎于网景和微软早期的动态 HTML（DHTML，Dynamic HTML），DOM 现在是真正跨平台、语言无关的表示和操作网页的方式。
 
 ## 节点层级
@@ -126,7 +128,7 @@
 
          > 会检测这个节点的所有后代，从中搜索上述两种情形。如果发现空文本节点，则将其删除；如果两个同胞节点是相邻的，则将其合并为一个文本节点。
 
-## Document 类型
+### Document 类型
 
   > JavaScript 中表示文档节点的类型
   > 在浏览器中，文档对象 document 是 HTMLDocument 的实例（HTMLDocument 继承 Document），表示整个 HTML 页面。
@@ -190,3 +192,50 @@
   4.  特殊集合
   5.  DOM 兼容性检测
   6.  文档写入
+
+### Element类型
+
+### Text类型
+
+### Comment 类型
+
+### CDATASection 类型
+
+### DocumentType 类型
+
+### DocumentFragment 类型
+
+### Attr 类型
+
+## DOM编程
+
+### 动态脚本
+
+### 动态样式
+
+### 操作表格
+
+### NodeList
+
+## MutationObserver
+
+
+# DOM拓展
+
+## Selectors API 
+
+## 元素遍历
+
+## HTML5
+
+## 专用扩展
+
+# DOM2和DOM3
+
+## DOM2的演进
+
+## 样式
+
+## 遍历
+
+## 范围

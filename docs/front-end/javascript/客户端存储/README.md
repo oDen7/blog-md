@@ -2,9 +2,13 @@
 
 ## Cookie
 > 用于客户端存储会话信息
+> 
 > 在响应http请求时,通过Http头部Set-Cookie包含客户信息
+> 
 > http响应设置name,值为value的cookie。
+> 
 > 浏览器会存储会话信息,并在之后每个请求都会通过http头部cookie发回服务器
+> 
 > 用于唯一标识发送请求的客户端。
 
 ### cookie的限制
@@ -22,15 +26,21 @@
   4. Safari 和 Chrome 对每个域的 cookie 数没有硬性限制。
   
 > cookie 总数超过了单个域的上限，浏览器就会删除之前设置的 cookie。
+> 
 > IE 和 Opera 会按照最近最少使用（LRU，Least Recently Used）原则删除之前的 cookie
+> 
 > Firefox好像会随机删除之前的 cookie
 
 - cookie的大小限制
 > 大多数浏览器对 cookie 的限制是不超过 4096 字节，上下可以有一
 个字节的误差。
+> 
 > 为保证兼容性,cookie 的大小不超过 4095 字节
+> 
 > 大小限制适用于一个域的所有 cookie，而不是单个 cookie
+> 
 > cookie 超过最大限制，则该 cookie 会被静默删除
+>
 > 使用多字节字符（如 UTF-8 Unicode 字符），则每个字符最多可能占 4 字节
 
 ### cookie的构成
@@ -46,21 +56,30 @@
 > 通过url路径把cookie发送指定服务器路径,即使是同域.
 - 过期时间
 > 删除cookie的时间戳.
+>
 > 默认在会话结束后删除所有cookie
+> 
 > 指定删除的具体时间使用GMT 格式（Wdy, DD-Mon-YYYY HH:MM:SS GMT）
+> 
 > 设置过去时间会立即删除 cookie
 - 安全标志
 > 使用ssl才会发送cookie到服务器
 - HTTP-only
 > 用来防御XSS攻击
+>
 > 服务器对cookie设置的一个附加的属性，在生成cookie时使用HttpOnly标志有助于减轻客户端脚本访问受保护cookie的风险
+>
 > 可以在客户端,服务端写入,但是只能在服务端读取
 
 ### JavaScript中使用cookie
 > 处理比较麻烦，因为接口过于简单，只有 BOM 的 document.cookie 属性
+>
 > 所有名和值都是 URL 编码的，因此必须使用 decodeURIComponent()解码。
+>
 > document.cookie 属性设置新的 cookie 字符串不会覆盖之前存在的任何 cookie，除非设置了已有的cookie
+>
 > 设置 cookie 的格式如下，与 Set-Cookie 头部的格式一样
+>
 > JavaScript 中读写 cookie 不是很直观，所以可以通过辅助函数来简化相应的操作
 
 ```javascript
@@ -104,7 +123,9 @@ class CookieUtil {
 
 ### 子Cookie
 > 绕过浏览器对每个域的限制
+>
 > 子 cookie 是在单个cookie 存储的小块数据，本质上是使用 cookie 的值在单个 cookie 中存储多个名/值对
+>
 > 类似于查询字符串。这些值可以存储为单个 cookie，而不用单独存储为自己的名/
 值对。结果就是网站或 Web 应用程序能够在单域 cookie 数限制下存储更多的结构化数据
 
@@ -155,7 +176,9 @@ class SubCookieUtil {
 
 ### 小结
 > cookie在数量,大小,操作方式上有很大限制
+>
 > 会影响请求性能,cookie越大请求时间越长
+>
 > 可以把数据传递给服务器,也可以从服务器传给客户端
 
 ## web Stroage
@@ -176,8 +199,11 @@ class SubCookieUtil {
 
 ### seesionStorage
 > 主要用于存储只在客户端会话期间有效的小块数据
+>
 > 只存储会话数据，这意味着数据只会存储到浏览器关闭
+>
 > sessionStorage 中的数据不受页面刷新影响，可以在浏览器崩溃并重启后恢复。(IE不支持)
+>
 > 存储在sessionStorage 对象中的数据不能跨页面使用
 
 #### 场景
@@ -185,8 +211,11 @@ class SubCookieUtil {
 
 ### localStroage
 > 在客户端持久存储数据的机制
+> 
 > 访问同一个 localStorage 对象,必须同源(同域,同端口,同协议)
+> 
 > 会保留到通过 JavaScript 删除或者用户清除浏览器缓存
+> 
 > 不受页面刷新影响，也不会因关闭窗口、标签页或重新启动浏览器而丢失
 
 #### 场景
@@ -194,10 +223,12 @@ class SubCookieUtil {
 
 ### 限制
 > 客户端数据的大小限制是按照每个源（协议、域和端口）来设置的，因此每个源有固定大小的数据存储空间
+> 
 > 不同浏览器给 localStorage 和 sessionStorage 设置了不同的空间限制，但大多数会限制为每个源 5MB。
 
 ### 存储事件
 > 每当 Storage 对象发生变化时，都会在文档上触发 storage 事件。
+> 
 > getItem(),setItem(),delete(),removeItem(),clear()都会触发这个事件
 
 - 属性
