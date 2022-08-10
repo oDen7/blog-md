@@ -89,11 +89,11 @@ const front = [{
     }]
 },
 {
-    text: 'webpack',
+    text: 'buildTools',
     collapsible: true,
     children: [{
-        text: '构建vue',
-        children: ["/front-end/webpack/constructVue/README.md"]
+        text: '使用webpack构建vue',
+        children: ["/front-end/buildTools/constructVue/README.md"]
     }]
 },
 {
