@@ -1,1 +1,0 @@
-const e=JSON.parse('{"key":"v-5a62a421","path":"/front-end/webpack/es6-devlopment/","title":"webpack-js-development","lang":"zh-CN","frontmatter":{},"excerpt":"","headers":[],"git":{"updatedTime":1655028833000,"contributors":[{"name":"oDen7","email":"dengao99@126.com","commits":3}]},"filePathRelative":"front-end/webpack/es6-devlopment/README.md"}');export{e as data};
