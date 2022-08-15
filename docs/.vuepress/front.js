@@ -33,18 +33,18 @@ const front = [{
         text: '函数',
         children: ['/front-end/javascript/函数/README.md']
     },
-    {
-        text: '客户端存储',
-        children: ['/front-end/javascript/客户端存储/README.md']
-    },
+    // {
+    //     text: '客户端存储',
+    //     children: ['/front-end/javascript/客户端存储/README.md']
+    // },
     {
         text: '类',
         children: ['/front-end/javascript/类/README.md']
-    },
-    {
-        text: '文档对象模型',
-        children: ['/front-end/javascript/文档对象模型/README.md']
-    },
+    // },
+    // {
+    //     text: '文档对象模型',
+    //     children: ['/front-end/javascript/文档对象模型/README.md']
+    // },
     {
         text: '浏览器对象模型',
         children: ['/front-end/javascript/浏览器对象模型/README.md']
