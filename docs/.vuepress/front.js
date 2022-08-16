@@ -68,7 +68,11 @@ const front = [{
     {
         text: '客户端检测',
         children: ['/front-end/javascript/客户端检测/README.md']
-    }
+    },
+        // {
+        //     text: "表单脚本",
+        //     children: ["/front-end/javascript/表单脚本-/README.md"]
+        // }
     ],
 },
 {
