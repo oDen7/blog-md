@@ -40,7 +40,7 @@ const front = [{
     {
         text: '类',
         children: ['/front-end/javascript/类/README.md']
-    // },
+    },
     // {
     //     text: '文档对象模型',
     //     children: ['/front-end/javascript/文档对象模型/README.md']
