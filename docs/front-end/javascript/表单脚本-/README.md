@@ -28,19 +28,19 @@
 ### 提交表单
 > 表单是通过用户点击提交按钮或图片按钮的方式提交的。
 
-1. 通过按钮触发
+- 通过按钮触发
 > `提交按钮`可以使用`type`属性为`submit` 的 `<input>` 或 `<button>`
 > 
 > `图片按钮`可以使用`type`属性为`image`的`<input>`元素来定义
 
-2. 通过事件触发
+- 通过事件触发
 ```javascript
 let form = document.getElementById("myForm");
 // 提交表单
 form.submit(); 
 ```
 
-3. 阻止表单触发
+- 阻止表单触发
 > 调用 preventDefault()方法可以阻止表单提交
 
 ```javascript
@@ -54,10 +54,10 @@ form.addEventListener("submit", (event) => {
 ### 重置表单
 > 用户单击重置按钮可以重置表单。
 
-1. 通过按钮触发
+- 通过按钮触发
 > `重置按钮`可以使用`type`属性为`reset`的`<input>`或`<button>`
 
-2. 通过事件触发
+- 通过事件触发
 ```javascript
 let form = document.getElementById("myForm");
 // 重置表单
@@ -191,13 +191,13 @@ let fieldCount = form.elements.length;
        ```
 
 ## 文本框编程
-1. 单行:`<input>`
+- 单行:`<input>`
    1. type:默认为text
    2. size:指定文本框宽度
    3. value:指定初始值,保存值
    4. maxLength:指定文本框允许的最多字符数
    
-2. 多行:`<textarea>`
+- 多行:`<textarea>`
    1. rows:文本框高度,以字符数计量
    2. cols:文本框宽度,以字符数计量
    3. maxlength:不能在 HTML 中指定最大允许的字符数。
@@ -222,7 +222,7 @@ textbox.addEventListener("focus", (event) => {
 }); 
 ```
 
-1. select()事件
+- select()事件
 > 当选中文本框中的文本时，会触发 select 事件。
 > 
 > 这个事件确切的触发时机因浏览器而异。
@@ -238,7 +238,7 @@ textbox.addEventListener("select", (event) => {
 }); 
 ```
 
-2. 取得选中的文本
+- 取得选中的文本
 > 虽然 select 事件能够表明有文本被选中，但不能提供选中了哪些文本的信息。
   1. selectionStart:文本选区的起点
   2. selectionEnd:文本选区的终点
@@ -263,7 +263,7 @@ function getSelectedText(textbox){
 // 注意 document.selection 是根本不需要textbox 参数的。
 ```
 
-3. 部分选中文本
+- 部分选中文本
 > select()方法之外，Firefox最早实现的 setSelectionRange()方法也可以在所有文本框中使用。
 > 
 > 要选择的第一个字符的索引和停止选择的字符的索引（与字符串的 substring()方法一样）。
@@ -306,12 +306,292 @@ range.select(); // "o w"
 ```
 
 ### 输入过滤
+> 不同文本框经常需要保证输入特定类型或格式的数据。
+> 
+> 或许数据需要包含特定字符或必须匹配某个特定模式。
+> 
+> 由于文本框默认并未提供什么验证功能，因此必须通过 JavaScript 来实现这种输入过滤。
+
+- 屏蔽字符
+> 有些输入框需要出现或不出现特定字符
+> 
+
+```javascript
+// 可以通过阻止这个事件的默认行为来屏蔽非数字字符
+textbox.addEventListener("keypress", (event) => {
+ event.preventDefault(); 
+}); 
+
+// 如果想只屏蔽特定字符，则需要检查事件的 charCode 属性，以确定正确的回应方式。
+textbox.addEventListener("keypress", (event) => {
+  if (!/\d/.test(String.fromCharCode(event.charCode))){ 
+    event.preventDefault(); 
+  }
+});
+
+// 组合按键
+textbox.addEventListener("keypress", (event) => {
+  if (!/\d/.test(String.fromCharCode(event.charCode)) && event.charCode > 9 && !event.ctrlKey){ 
+    event.preventDefault(); 
+  }
+}); 
+```
+
+- 处理剪切板
+  
+- 剪切板事件
+  1. beforecopy：复制操作发生前触发。可以在向剪贴板发送或从中检索数据前修改数据
+  2. copy：复制操作发生时触发。阻止实际的剪贴板操作,需要禁止事件
+  3. beforecut：剪切操作发生前触发。可以在向剪贴板发送或从中检索数据前修改数据
+  4. cut：剪切操作发生时触发。阻止实际的剪贴板操作,需要禁止事件
+  5. beforepaste：粘贴操作发生前触发。可以在向剪贴板发送或从中检索数据前修改数据
+  6. paste：粘贴操作发生时触发。阻止实际的剪贴板操作,需要禁止事件
+  
+- IE 和 其他浏览器差异
+  1. 在 Safari、Chrome 和 Firefox 中，beforecopy、beforecut 和 beforepaste 事件只会在显示文本框的上下文菜单（预期会发生剪贴板事件）时触发
+  2. 但 IE 不仅在这种情况下触发，也会在 copy、cut 和 paste 事件之前触发。无论是在上下文菜单中做出选择还是使用键盘快捷键，copy、cut 和 paste 事件在所有浏览器中都会按预期触发。
+  3. 在 Firefox、Safari 和 Chrome 中只能在剪贴板事件期间访问 clipboardData 对象
+  4. IE 则在任何时候都会暴露 clipboardData 对象
+
+- clipboardData
+> 通过 window 对象（IE）或 event 对象来获取
+
+- getData()
+> 方法从剪贴板检索字符串数据，并接收一个参数，该参数是要检索的数据的格式
+> 
+> IE 为此规定了两个选项 ："text"和"URL"。
+> 
+> Firefox、Safari 和 Chrome 则 期 待 MIME 类型，不过会将"text"视为等价于"text/plain"。
+
+```javascript
+function getClipboardText(event){
+ let clipboardData = (event.clipboardData || window.clipboardData); 
+ return clipboardData.getData("text"); 
+} 
+```
+
+- setData()
+> 给剪贴板赋予指定格式的数据。返回 true 表示操作成功。
+> 
+> 第一个参数用于指定数据类型，第二个参数是要放到剪贴板上的文本
+> 
+> IE 支持"text"和"URL"
+> 
+> Safari 和 Chrome 则期待 MIME 类型。Safari 和 Chrome 不认可"text"类型。Firefox、Safari 和 Chrome 则 期 待 MIME 类型，不过会将"text"视为等价于"text/plain"。
+> 
+> 只有在 IE8 及更早版本中调用 setData()才有效，其他浏览器会忽略对这个方法的调用。
+
+```javascript
+// 兼容ie和chrome的写法
+function setClipboardText (event, value){ 
+ if (event.clipboardData){ 
+    return event.clipboardData.setData("text/plain", value); 
+ } else if (window.clipboardData){ 
+    return window.clipboardData.setData("text", value); 
+ } 
+} 
+
+// 在 paste 事件中，可以确定剪贴板上的文本是否无效，如果无效就取消默认行为
+textbox.addEventListener("paste", (event) => {
+ let text = getClipboardText(event); 
+ if (!/^\d*$/.test(text)){ 
+  event.preventDefault();
+ } 
+});
+
+// 在支持copy、cut 和 paste 事件的浏览器（IE、Safari、Chrome 和 Firefox）中，很容易阻止事件的默认行为。
+// 在 Opera 中，则需要屏蔽导致相应事件的按键，同时阻止显示相应的上下文菜单。
+```
+
+
+- clearData()
+> 删除剪贴板中指定格式的数据。
+
+```javascript 
+function clearClipboardText(event){
+ let clipboardData = (event.clipboardData || window.clipboardData); 
+ return clipboardData.clearData(); 
+} 
+```
 
 ### 自动切换
+> JavaScript 可以通过很多方式来增强表单字段的易用性。
+> 
+> 最常用的是在当前字段完成时自动切换到下一个字段。对于要收集数据的长度已知（比如电话号码）的字段是可以这样处理的。
+
+```html
+<input type="text" name="tel1" id="txtTel1" maxlength="3">
+<input type="text" name="tel2" id="txtTel2" maxlength="3"> 
+<input type="text" name="tel3" id="txtTel3" maxlength="4"> 
+```
+
+```javascript
+function tabForward(event) {
+    let target = event.target;
+    if (target.value.length == target.maxLength) {
+        let form = target.form;
+        for (let i = 0, len = form.elements.length; i < len; i++) {
+            if (form.elements[i] == target) {
+                if (form.elements[i + 1]) {
+                    form.elements[i + 1].focus();
+                }
+                return;
+            }
+        }
+    }
+}
+let inputIds = ["txtTel1", "txtTel2", "txtTel3"];
+for (let id of inputIds) {
+    let textbox = document.getElementById(id);
+    textbox.addEventListener("keyup", tabForward);
+}
+let textbox1 = document.getElementById("txtTel1");
+let textbox2 = document.getElementById("txtTel2");
+let textbox3 = document.getElementById("txtTel3"); 
+```
 
 ### HTML5 约束验证 API
 
+> 可以使用 HTML 标记指定对特定字段的约束，然后浏览器会根据这些约束自动执行表单验证
+
+- 必填字段
+> 任何带有 required 属性的字段都必须有值，否则无法提交表单
+
+```html
+<input type="text" name="username" required>
+```
+
+> 这个属性适用于`<input>`、`<textarea>`和`<select>`字段（Opera 直到版本 11 都不支持`<select>`的 required 属性）
+
+- 可以通过JavaScript 检测对应元素的 required 属性来判断表单字段是否为必填：
+```javascript
+let isUsernameRequired = document.forms[0].elements["username"].required; 
+```
+- 还可以使用下面的代码检测浏览器是否支持 required 属性：
+```javascript
+let isRequiredSupported = "required" in document.createElement("input"); 
+```
+> Firefox、Chrome、IE 和 Opera 会阻止表单提交并在相应字段下面显示有帮助信息的弹框，而 Safari 什么也不做，也不会阻止提交表单
+
+
+- 更多输入类型
+  - `<input type="email" name="email">`
+    > "email"类型确保输入的文本匹配电子邮件地址
+  - `<input type="url" name="homepage">`
+    > "url"类型确保输入的文本匹配 URL
+
+  - 老版本浏览器会自动将未知类型值设置为"text"，而支持的浏览器会返回正确的值
+    ```javascript
+    let input = document.createElement("input");
+    input.type = "email"; 
+    let isEmailSupported = (input.type == "email"); 
+    ```
+
+- 数值范围
+  > `number`、`range`、`datetime`、`datetime-local`、`date`、`month`、`week`和`time`
+
+  - 公共属性
+    - min 属性（最小可能值）
+    - max 属性（最大可能值）
+    - step属性（从 min 到 max 的步长值）
+
+    ```html
+    <input type="number" min="0" max="100" step="5" name="count"> 
+    ```
+  
+  - 公共事件
+    1. stepUp()
+      > 要从当前值加上
+    2. stepDown()
+      > 减去的数值
+
+    > 默认情况下,步长值会递增或递减1
+    
+
+- 输入模式
+  > `pattern`:指定一个正则表达式，用户输入的文本必须与之匹配
+  ```html
+  <input type="text" pattern="\d+" name="count">
+  ```
+
+  - 通过访问 pattern 属性可以读取模式:
+    ```javascript
+    let pattern = document.forms[0].elements["count"].pattern;
+    ```
+  - 检测浏览器是否支持 pattern 属性
+    ```javascript
+    let isPatternSupported = "pattern" in document.createElement("input");
+    ```
+
+- 检测有效性
+  > 检测表单中任意给定字段是否有效
+  > 所有表单元素上都可以使用，如果字段值有效就会返回 true，否则返回 false
+
+  - 公共属性:
+    1. customError：如果设置了 setCustomValidity()就返回 true，否则返回 false。
+    2. patternMismatch：如果字段值不匹配指定的 pattern 属性则返回 true。
+    3. rangeOverflow：如果字段值大于 max 的值则返回 true。
+    4. rangeUnderflow：如果字段值小于 min 的值则返回 true。
+    5. stepMisMatch：如果字段值与 min、max 和 step 的值不相符则返回 true。
+    6. tooLong：如果字段值的长度超过了 maxlength 属性指定的值则返回 true。某些浏览器，如Firefox 4 会自动限制字符数量，因此这个属性值始终为 false。
+    7. typeMismatch：如果字段值不是"email"或"url"要求的格式则返回 true。
+    8. valid：如果其他所有属性的值都为 false 则返回 true。与 checkValidity()的条件一致。
+    9. valueMissing：如果字段是必填的但没有值则返回 true。
+
+  ```javascript
+  if (input.validity && !input.validity.valid){
+    if (input.validity.valueMissing){ 
+      console.log("Please specify a value.") 
+    } else if (input.validity.typeMismatch){ 
+      console.log("Please enter an email address."); 
+    } else { 
+      console.log("Value is invalid."); 
+    } 
+  } 
+  ```
+  
+  ```javascript
+  // 检测表单中任意给定字段是否有效
+  if (document.forms[0].elements[0].checkValidity()){
+    // 字段有效，继续
+  } else { 
+    // 字段无效
+  } 
+
+  // 检查整个表单是否有效
+  if(document.forms[0].checkValidity()){
+    // 表单有效，继续
+  } else { 
+    // 表单无效
+  } 
+  ```
+
+- 禁用验证
+> 指定 novalidate 属性可以禁止对表单进行任何验证
+
+```html
+<form method="post" action="/signup" novalidate>
+ <!-- 表单元素 --> 
+</form> 
+```
+- 通过 JavaScript 属性 noValidate 检索或设置
+```javascript
+document.forms[0].noValidate = true; // 关闭验证
+```
+
+- 指定按钮通过无须验证即可提交表单
+```html
+<form method="post" action="/foo">
+ <!-- 表单元素 --> 
+ <input type="submit" value="Regular Submit"> 
+ <input type="submit" formnovalidate name="btnNoValidate"
+ value="Non-validating Submit">
+</form> 
+```
+
 ## 选择框编程
+
+
 
 ### 选项处理
 
