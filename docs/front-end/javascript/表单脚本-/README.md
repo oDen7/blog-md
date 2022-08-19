@@ -590,10 +590,59 @@ document.forms[0].noValidate = true; // 关闭验证
 ```
 
 ## 选择框编程
+  > `<select>`和`<option>`
 
+- HTMLSelectElement 属性和方法
+  1. add(newOption,relOption)：在 relOption 之前向控件中添加新的`<option>`。
+  2. multiple：布尔值，表示是否允许多选，等价于 HTML 的 multiple 属性。
+  3. options：控件中所有`<option>`元素的 HTMLCollection。
+  4. remove(index)：移除给定位置的选项。
+  5. selectedIndex：选中项基于 0 的索引值，如果没有选中项则为–1。对于允许多选的列表，始终是第一个选项的索引。
+  6. size：选择框中可见的行数，等价于 HTML 的 size 属性。选择框的 type 属性可能是"select-one"或"select-multiple"，具体取决于 multiple 属性是否存在。当前选中项根据以下规则决定选择框的 value 属性。
+  7. 如果没有选中项，则选择框的值是空字符串。
+  8. 如果有一个选中项，且其 value 属性有值，则选择框的值就是选中项 value 属性的值。即使value 属性的值是空字符串也是如此。
+  9. 如果有一个选中项，且其 value 属性没有指定值，则选择框的值是该项的文本内容。
+  10. 如果有多个选中项，则选择框的值根据前两条规则取得第一个选中项的值。
 
+```html
+<select name="location" id="selLocation">
+ <option value="Sunnyvale, CA">Sunnyvale</option> 
+ <option value="Los Angeles, CA">Los Angeles</option> 
+ <option value="Mountain View, CA">Mountain View</option> 
+ <option value="">China</option> 
+ <option>Australia</option> 
+</select> 
+```
+
+- HTMLOptionElement 属性和方法
+  1. index：选项在 options 集合中的索引。
+  2. label：选项的标签，等价于 HTML 的 label 属性。
+  3. selected：布尔值，表示是否选中了当前选项。把这个属性设置为 true 会选中当前选项。
+  4. text：选项的文本。
+  5. value：选项的值（等价于 HTML 的 value 属性）。
+
+```javascript
+let selectbox = document.forms[0].elements["location"];
+// 推荐
+let text = selectbox.options[0].text; // 选项文本
+let value = selectbox.options[0].value; // 选项值
+
+// 但在 HTML 中没有指定 value 属性的情况下，IE8 及早期版本会返回空字符串，
+// 而 IE9 及之后版本、Safari、Firefox、Chrome 和 Opera 会返回与 text相同的值。
+```
 
 ### 选项处理
+> 对于只允许选择一项的选择框，获取选项最简单的方式是使用选择框的 selectedIndex 属性
+
+```javascript
+let selectedOption = selectbox.options[selectbox.selectedIndex]; 
+
+let selectedIndex = selectbox.selectedIndex;
+let selectedOption = selectbox.options[selectedIndex]; 
+console.log(`Selected index: ${selectedIndex}\n` + 
+ `Selected text: ${selectedOption.text}\n` + 
+`Selected value: ${selectedOption.value}`); 
+```
 
 ### 添加选项
 
